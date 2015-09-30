@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.leona.server.model.Estacao;
+import br.leona.server.model.Observacao;
 import br.leona.server.model.Usuario;
 import java.util.List;
 
@@ -44,7 +45,20 @@ public class IndexController {
                 .include("usuario", u)
                 .forwardTo(CaminhoPaginas.MENU_PRINCIPAL);                
     }
-    
+    void paginaMensagemOkObservacao() {
+        result.forwardTo(CaminhoPaginas.CADASTRO_OBSERVACAO_OK);
+    }
+    @Path("/cadastroObservacao")
+    public void paginaCadastroObservacao(){
+        result.forwardTo(CaminhoPaginas.CADASTRO_OBSERVACAO);
+    }
+    @Path("/visualizacaoObservacao")
+    void paginaVisualizacaoObservacao(Observacao o) {
+        
+        result
+                .include("observation", o)
+                .forwardTo(CaminhoPaginas.VISUALIZAR_OBSERVACAO);
+    }
     @Path("/listagemEstacao")
     public void paginaListagemEstacao(){
         EstacaoController e = new EstacaoController(result);

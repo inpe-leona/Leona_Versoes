@@ -16,6 +16,11 @@ module File:          java.io.File.*
 module FileIS:        java.io.FileInputStream.*
 module InetAddress:   java.net.InetAddress.*
 module ImageIO:       javax.imageio.ImageIO.*
+module ParseException:java.text.ParseException
+module HttpServletReq:javax.servlet.http.HttpServletRequest
+module HttpSession:   javax.servlet.http.HttpSession.*
+module Quartz:        org.quartz.*
+
 
 %Constraints
 Service can-depend-only Controller
@@ -24,7 +29,7 @@ only Controller can-depend Controller
 only DAO can-declare Esfinge
 View cannot-access Model
 Model must-declare Serializable
-only Controller can-declare VRaptor
+Model cannot-declare VRaptor
 only Controller can-declare JavaxSwing
 DAO cannot-declare FileNotFound
 Model cannot-declare IOException
@@ -33,3 +38,6 @@ only Service can-declare File
 only Service can-declare FileIS
 only Service can-declare InetAddress
 only Service can-declare ImageIO
+Model cannot-declare ParseException
+only Controller can-declare HttpSession
+only Service can-declare Quartz

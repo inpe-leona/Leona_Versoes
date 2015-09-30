@@ -17,4 +17,8 @@ public class CaminhoPaginas {
     //estacao
     public static final String LISTAGEM_ESTACAO = master+"estacao/lista.jsp";
     public static final String CADASTRO_ESTACAO = master+"estacao/cadastro.jsp";
+    
+    public static final String CADASTRO_OBSERVACAO_OK = master+"observacao/okobservacao.jsp"; 
+    public static final String CADASTRO_OBSERVACAO = master+"observacao/cadastro.jsp";
+    public static final String VISUALIZAR_OBSERVACAO = master+"observacao/visualizar.jsp";
 }
