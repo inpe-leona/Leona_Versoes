@@ -21,6 +21,11 @@ module HttpServletReq:javax.servlet.http.HttpServletRequest
 module HttpSession:   javax.servlet.http.HttpSession.*
 module Quartz:        org.quartz.*
 
+module PrintWriter:   java.io.PrintWriter.*
+module ServletEx:     javax.servlet.ServletException.*
+module HttpServlet:   javax.servlet.http.HttpServlet.*
+module HttpServletRes:javax.servlet.http.HttpServletResponse.*
+module HttpServletReq:javax.servlet.http.HttpServletRequest
 
 %Constraints
 Service can-depend-only Controller
@@ -41,3 +46,9 @@ only Service can-declare ImageIO
 Model cannot-declare ParseException
 only Controller can-declare HttpSession
 only Service can-declare Quartz
+
+only Servlet can-declare PrintWriter
+only Servlet can-declare ServletEx
+only Servlet can-declare HttpServlet
+only Servlet can-declare HttpServletRes
+Service cannot-declare HttpServletReq
