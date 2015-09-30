@@ -1,25 +1,24 @@
-<%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="teste">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Projeto LEONA</title>
         <link href="<c:url value="./resources/css/bootstrap.css"/>" rel="stylesheet">
         <link href="<c:url value="./resources/css/half-slider.css"/>" rel="stylesheet">
-        
+        <script src="<c:url value="./resources/js/angular.min.js"/>"></script>
+        <script src="<c:url value="./resources/js/metodos.js"/>"></script>
     </head>
-    <body>
+    <body ng-controller="objeto">
         <nav class="navbar navbar-fixed-top navbar-inverse " role="navigation">
             <div class="container">
                 <div class="collapse navbar-collapse navbar-ex1-collapse ">
                     <ul class="nav navbar-nav ">
                         <li><a href="<c:url value='/'/>">Inicio</a></li>
-                        <li><a href="<c:url value='/imagem'/>">Gestão de Imagem</a></li>   
-                        <li><a href="<c:url value='/observacao'/>">Gestão de Observação</a></li> 
-                        <li><a href="<c:url value='/usuario'/>">Gestão de Usuário</a></li> 
-                        <li><a href="<c:url value='/estacao'/>">Gestão de Estacao</a></li> 
+                        <li><a href="<c:url value='/login'/>">Login</a></li>   
+                        <li><a href="<c:url value='/cadastroUsuario'/>">Cadastrar</a></li> 
                     </ul>
                 </div>
             </div>
@@ -38,11 +37,9 @@
             <a class="right carousel-control"></a>
         </div>
                     
-
         <div class="container">
             <div class="row section">
                 <div class="col-lg-12">
-                    <img src='C:\receiver\ProjetoLeona\oi.jpg'>
                     <h1>Detalhes</h1>
                     <p align="justify">Na Divisão de Aeronomia do INPE encontra-se o primeiro grupo de pesquisa desses fenômenos no Brasil, o grupo de Acoplamento Eletrodiâmico Atmosférico e Espacial - ACATMOS, coordenado pela orientadora. Uma das necessidades para a realização de uma pesquisa de qualidade sobre ELTs no Brasil, e na América do Sul em geral, é poder realizar uma coleta consistente de dados desses fenômenos sobre as tempestades elétricas que ocorrem no país e em todo o continente. Nesse intuito, concebemos a criação de uma rede de câmeras para realizar a observação desses fenômenos, que possam ser controladas remotamente via internet. Essas unidades de observação serão instaladas em toda a América do Sul em locais estratégicos para cobrir as regiões de tempestades mais intensas no continente. Irá ser desenvolvido um software centralizado para o armazenamento e gerenciamento para os dados obtidos das estações remotas. Ele irá consistir de uma aplicação web que interage com uma base de dados que irá armazenar informações relativas a observações, com todos os seus dados associados. A partir dela será possível relacionar e organizar as imagens obtidas em eventos, dando acesso aos pesquisadores que irão fazer as análises. A partir dessa aplicação web será também possível controlar as câmeras das estações remotas e fazer a observação dos eventos. Ao criar uma nova observação de eventos, deve ser possível associá-la a estações que irão participar da observação. A partir de um streaming de imagens enviadas, deve ser possível acompanhar a imagem das câmeras e redirecioná-las para ângulos mais adequados. Deve haver também um acesso as estações para o recebimento das imagens obtidas durante a observação.</p>
                 </div>
@@ -62,7 +59,8 @@
                 </div>
             </footer>
         </div>
+
         <script src="<c:url value="./resources/js/jquery-1.10.2.js"/>"></script>
-        <script src="<c:url value="./resources/js/bootstrap.js"/>"></script>               
+        <script src="<c:url value="./resources/js/bootstrap.js"/>"></script> 
     </body>
 </html>
