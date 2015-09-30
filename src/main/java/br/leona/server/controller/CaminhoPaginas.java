@@ -14,4 +14,7 @@ public class CaminhoPaginas {
     public static String CADASTRO_USUARIO_OK = master+"usuario/cadastro_ok.jsp";
     public static String MENU_PRINCIPAL = master+"usuario/menu.jsp";
     
+    //estacao
+    public static final String LISTAGEM_ESTACAO = master+"estacao/lista.jsp";
+    public static final String CADASTRO_ESTACAO = master+"estacao/cadastro.jsp";
 }
