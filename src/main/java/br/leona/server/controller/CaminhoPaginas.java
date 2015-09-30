@@ -1,3 +1,5 @@
+
+
 package br.leona.server.controller;
 
 public class CaminhoPaginas {
@@ -11,7 +13,5 @@ public class CaminhoPaginas {
     public static String CADASTRO_USUARIO = master+"usuario/cadastro.jsp";
     public static String CADASTRO_USUARIO_OK = master+"usuario/cadastro_ok.jsp";
     public static String MENU_PRINCIPAL = master+"usuario/menu.jsp";
-    
-    
     
 }
