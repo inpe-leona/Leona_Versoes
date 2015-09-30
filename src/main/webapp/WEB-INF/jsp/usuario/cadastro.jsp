@@ -16,13 +16,10 @@
             <div class="container">
                 <div class="collapse navbar-collapse navbar-ex1-collapse ">
                     <ul class="nav navbar-nav ">
-                        <li><a href="<c:url value='/'/>">Inicio</a>
-                        </li>
-                        <li><a href="<c:url value='/cadastro'/>">Cadastrar</a></li>
-                        <li><a href="<c:url value='/login'/>">Login</a>
-                        </li>
-                        <li><a href="<c:url value='/contato'/>">Contato</a>
-                        </li>
+                        <li><a href="<c:url value='/'/>">Inicio</a></li>
+                        <li><a href="<c:url value='/login'/>">Login</a></li> 
+                        <li><a href="<c:url value='/cadastroUsuario'/>">Cadastrar</a></li> 
+                        <li><a href="<c:url value='/contato'/>">Contato</a></li>
                     </ul>
                 </div>
             </div>

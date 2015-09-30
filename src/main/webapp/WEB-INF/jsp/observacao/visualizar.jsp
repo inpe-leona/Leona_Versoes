@@ -10,6 +10,24 @@
         </script>
         <script>
             $(document).ready(function () {
+                $('#ligarCamera').click(function (event) {
+                    $.get('LigarCameraServlet', {variavel: 1}, function (responseText) {
+                        $('#welcometext').text(responseText);
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#desligarCamera').click(function (event) {
+                    $.get('DesligarCameraServlet', {variavel: 1}, function (responseText) {
+                        $('#welcometext').text(responseText);
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
                 $('#iniciarGravacao').click(function (event) {
                     alert("oi");
                     $.get('PantiltGravacaoServlet', {variavel: 1}, function (responseText) {
@@ -31,9 +49,11 @@
         <script>
             $(document).ready(function () {
                 $('#azimute').click(function (event) {
+                    
                     var azimute = $('#azimuteGraus').val();
+                    
                     $.get('PantiltAzimuteServlet', {azimute: azimute}, function (responseText) {
-                        $('#welcometext').text(responseText);
+                        $('#posazimut').val(azimute);
                     });
                 });
             });
@@ -42,9 +62,11 @@
         <script>
             $(document).ready(function () {
                 $('#elevacao').click(function (event) {
+                    console.log('okok');
                     var elevacao = $('#elevacaoGraus').val();
+                    
                     $.get('PantiltElevacaoServlet', {elevacao: elevacao}, function (responseText) {
-                        $('#welcometext').text(responseText);
+                        $('#poselevacao').val(elevacao);
                     });
                 });
             });
@@ -84,7 +106,7 @@
             $(document).ready(function () {
                 $('#reset').click(function (event) {
                     var graus = $('#graus').val();
-                    $.get('PantiltResetServlet', {graus: graus}, function (responseText) {
+                    $.get('PantiltResetServlet2', {graus: graus}, function (responseText) {
                         $('#welcometext').text(responseText);
                     });
                 });
@@ -102,9 +124,9 @@
                     <div class="collapse navbar-collapse navbar-ex1-collapse ">
                         <ul class="nav navbar-nav ">
                             <li><a href="<c:url value='/'/>">Inicio</a></li>
-                            <li><a href="<c:url value='/estacao'/>">Estações</a></li>
-                            <li><a href="<c:url value='/listagem'/>">Usuários</a></li>
-                            <li><a href="<c:url value='/observacao'/>">Observações</a></li>
+                            <li><a href="<c:url value='/listagemEstacao'/>">Estações</a></li>
+                            <li><a href="<c:url value='/listagemUsuarios'/>">Usuários</a></li>
+                            <li><a href="<c:url value='/listagemObservacao'/>">Observações</a></li>
                         </ul>
                         <div class="right">
                             <ul class="nav navbar-nav navbar-right ">     
@@ -115,6 +137,9 @@
                 </div>
             </nav>
             <br/>
+            <div class="col-md-4" align="center"><input type="button" id="reset" value="RESET"/></div>
+            <div class="col-md-4" align="center"><input type="button" id="ligarCamera" value="Ligar Camera"/></div>
+            <div class="col-md-4" align="center"><input type="button" id="desligarCamera" value="Desligar Camera"/></div>
             <table align="center">                
                 <tr>
                     <td align="center">
@@ -156,23 +181,34 @@
 
                     </td>
                     <td align="center">
-                        <p>Posição atual azimut: ${positionazi}</p>
+                        <p>Posição atual azimut: <input id="posazimut" disabled="true" style="width:40px"></p>
                     </td>
                     <td align="center">
 
                     </td>
                     <td align="center">
-                        <p>Posição atual elevação: ${positionele}</p>
+                        <p>Posição atual elevação: <input id="poselevacao" disabled="true" style="width:40px"></p>
                     </td>
                     <td align="center">
 
                     </td>
                 </tr>
             </table>
-            <h2 style="color:black">Nome da Observação: ${observation.nome}</h2>
+            <h2 style="color:black" align="center">Nome da Observação: ${observation.nome}</h2>
             <hr>            
             <br>
-            <div align="center"><h2>Aqui vai a Applet</h2></div>
+            <div>
+                <div class="col-md-6" align="right">
+                    <iframe src="http://150.163.156.118:8989" style="width: 680px; height: 480px"></iframe>
+                </div>
+                <div class="col-md-1" align="right"></div>
+                <div class="col-md-6" align="left">
+                    <!--<img src="<c:url value="/resources/img/preto.png"/>" style=" width:600px; height:480px">-->
+                    <iframe src="http://150.163.156.118:9999" style="width: 600px; height: 480px"></iframe>
+                </div>
+            </div>
+            
+            
         </div>
     </body>   
 </html>

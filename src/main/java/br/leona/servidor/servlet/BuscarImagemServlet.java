@@ -1,6 +1,6 @@
 package br.leona.servidor.servlet;
 
-import br.leona.server.service.ImagemService;
+import br.leona.servidor.service.ImagemService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
