@@ -20,12 +20,16 @@ module ParseException:java.text.ParseException
 module HttpServletReq:javax.servlet.http.HttpServletRequest
 module HttpSession:   javax.servlet.http.HttpSession.*
 module Quartz:        org.quartz.*
-
 module PrintWriter:   java.io.PrintWriter.*
 module ServletEx:     javax.servlet.ServletException.*
 module HttpServlet:   javax.servlet.http.HttpServlet.*
 module HttpServletRes:javax.servlet.http.HttpServletResponse.*
 module HttpServletReq:javax.servlet.http.HttpServletRequest
+module FTP:           org.apache.commons.net.ftp.*
+module Logging:       java.util.logging.*
+module ArrayList:     java.util.ArrayList.*
+module Security:      java.security.*
+module NetURL:        java.net.URL.*
 
 %Constraints
 Service can-depend-only Controller
@@ -46,9 +50,13 @@ only Service can-declare ImageIO
 Model cannot-declare ParseException
 only Controller can-declare HttpSession
 only Service can-declare Quartz
-
 only Servlet can-declare PrintWriter
 only Servlet can-declare ServletEx
 only Servlet can-declare HttpServlet
 only Servlet can-declare HttpServletRes
 Service cannot-declare HttpServletReq
+only Service can-declare FTP
+Controller cannot-declare Logging
+only Service can-declare ArrayList
+only Service can-declare Security
+only Service can-declare NetURL

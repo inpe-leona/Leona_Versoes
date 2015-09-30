@@ -71,4 +71,8 @@ public class IndexController {
     public void paginaCadastroEstacao(){
         result.forwardTo(CaminhoPaginas.CADASTRO_ESTACAO);
     }
+     void paginaImagens(List<String> caminho) {
+        result
+                .forwardTo(CaminhoPaginas.IMAGENSOBS);
+    }
 }

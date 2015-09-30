@@ -1,7 +1,7 @@
 package br.leona.server.service;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.leona.server.dao.UsuarioDao;
+import br.leona.server.dao.ConsultasUsuarioDao;
 import br.leona.server.model.Usuario;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,7 +11,7 @@ import org.esfinge.querybuilder.QueryBuilder;
 public class UsuarioService {
 
     private static final long serialVersionUID = -1917047398280846082L;
-    UsuarioDao dao = QueryBuilder.create(UsuarioDao.class);
+    ConsultasUsuarioDao dao = QueryBuilder.create(ConsultasUsuarioDao.class);
 
     public String cadastrar(Usuario usuario) throws NoSuchAlgorithmException {
         if ((usuario.getEmail().equals("")) || (usuario.getSenha().equals("")) || (usuario.getNome().equals(""))) {

@@ -21,4 +21,8 @@ public class CaminhoPaginas {
     public static final String CADASTRO_OBSERVACAO_OK = master+"observacao/okobservacao.jsp"; 
     public static final String CADASTRO_OBSERVACAO = master+"observacao/cadastro.jsp";
     public static final String VISUALIZAR_OBSERVACAO = master+"observacao/visualizar.jsp";
+    
+     public static final String GESTAO_IMAGEM = master+"imagem/imagem.jsp";
+    public static final String PASTAIMAGEM = master+"imagem/pastaImagem.jsp";
+    public static final String IMAGENSOBS = master+"imagem/imagensObservacao.jsp";
 }

@@ -12,6 +12,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 import org.esfinge.querybuilder.QueryBuilder;
 
 public class ImagemService {
@@ -67,5 +69,63 @@ public class ImagemService {
         return dao.getEstacaoByIp(ip);
     }
 
-    
+    public void buscarImagens() throws IOException, ParseException {
+        FTPClient f = new FTPClient();
+        f.connect("150.163.46.137");
+        f.login("nicolas", "nicolas");
+        FTPFile[] files = f.listFiles("/ProjetoLeona");
+        System.out.println("Pegou arquivos: " + files.length);
+        for (int i = 0; i < files.length; i++) {
+            if (i > 0) {
+                if (!files[i].getName().equals("..")) {
+                    ObservacaoService obs = new ObservacaoService();
+                    Observacao o = new Observacao();
+                    o.setNome(files[i].getName());
+                    obs.cadastrar(o);
+                    File fa = new File("C:/Servidor_Leona/src/main/webapp/resources/ProjetoLeona/" + files[i].getName());
+                    //File fa = new File("C:/receiver/ProjetoLeona/"+files[i].getName());
+                    System.out.println("nome do arquivo criado: " + fa.getName());
+                    if (fa.mkdir()) {
+                        FTPFile[] pastaEvento = f.listFiles("/ProjetoLeona/" + files[i].getName());
+                        System.out.println("Criou: " + pastaEvento.length);
+                        for (int j = 2; j < pastaEvento.length; j++) {
+                            System.out.println("Arquivos: " + pastaEvento[j].getName());
+                            String pathLocal = "C:/Servidor_Leona/src/main/webapp/resources";
+                            //String pathLocal = "C:/receiver";                
+                            String stringUrl = "ftp://nicolas:nicolas@150.163.46.137/ProjetoLeona/" + files[i].getName() + "/" + pastaEvento[j].getName();
+                            URL url = new URL(stringUrl);
+                            String nomeArquivoLocal = url.getFile();
+                            InputStream is = url.openStream();
+                            File arq = new File(pathLocal + nomeArquivoLocal);
+                            FileOutputStream fos = new FileOutputStream(pathLocal + nomeArquivoLocal);
+                            int umByte = 0;
+                            while ((umByte = is.read()) != -1) {
+                                fos.write(umByte);
+                            }
+                            is.close();
+                            fos.close();
+                        }
+                        System.out.println("Imagens Coletadas");
+                    } else {
+                        System.out.println("nao criou");
+                    }
+                }
+            }
+        }
+        System.out.println("Buscando Imagens...");
+    }
+
+    public List<String> pegarCaminhosImagens(String nome) {
+        System.out.println("nome:" + nome);
+        File diretorio = new File("C:/Servidor_Leona/src/main/webapp/resources/ProjetoLeona/" + nome);
+        System.out.println("Diretorio: " + diretorio.getName());
+        File[] arquivos = diretorio.listFiles();
+        List<String> listS = new ArrayList<String>();
+        for (int i = 0; i < arquivos.length; i++) {
+            System.out.println("resources/ProjetoLeona/" + nome + "/" + arquivos[i].getName());
+            String a = "resources/ProjetoLeona/" + nome + "/" + arquivos[i].getName();
+            listS.add(a);
+        }
+        return listS;
+    }
 }
