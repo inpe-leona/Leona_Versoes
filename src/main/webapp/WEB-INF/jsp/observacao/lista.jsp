@@ -33,6 +33,9 @@
         <div class="container">
 
             <br/>
+            <div class="row" align="right">
+                <a href="<c:url value='/usuario/menuadm'/>">Menu Principal</a> / <a href="<c:url value='/'/>">Sair</a>
+            </div>
 
             <div class="row">
                 <div class="col-lg-12">

@@ -1,4 +1,4 @@
-package br.leona.server.servlet;
+package br.leona.servidor.servlet;
 
 import br.leona.server.service.ImagemService;
 import java.io.IOException;
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PararGravacaoServlet extends HttpServlet {
+public class DesligarCameraServlet extends HttpServlet {
 
     private ImagemService imgService;
     
-    public PararGravacaoServlet(){
+    public DesligarCameraServlet(){
         this.imgService = new ImagemService();
     }
     
@@ -20,13 +20,14 @@ public class PararGravacaoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PararGravacaoServlet</title>");            
+            out.println("<title>Servlet DesligarCameraServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PararGravacaoServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DesligarCameraServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -35,7 +36,7 @@ public class PararGravacaoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        imgService.pararGravacao();
+        imgService.pararCamera();
     }
     
     @Override
@@ -48,4 +49,5 @@ public class PararGravacaoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+
 }

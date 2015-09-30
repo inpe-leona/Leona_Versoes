@@ -28,20 +28,34 @@ public class ObservacaoService implements Serializable{
     public int movimentar(int p, String l) {
         System.out.println("Graus: "+p);
         int r = 0;
-        System.out.println("veio movimentar");
         if (l == "azimute"){
-             System.out.println("veio azimute");
-             //Aqui coloco para mover azimute
-          
+             
+            /*try { // Call Web Service Operation
+                br.leona.estacao.controller.ControllerServices_Service service = new br.leona.estacao.controller.ControllerServices_Service();
+                br.leona.estacao.controller.ControllerServices port = service.getControllerServicesPort();
+                // TODO initialize WS operation arguments here
+                
+                // TODO process result here
+                java.lang.String result = port.moverAzimute(p);
+                System.out.println("Result = "+result);
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
+            }*/
             r = 1;
             System.out.println("Movimentou pra Esquerda");
         }
         if (l == "elevacao"){
             
-            System.out.println("ELEVOU2");
-            
-            //Aqui faço para mover Elevação
-            
+            /*try { // Call Web Service Operation
+                br.leona.estacao.controller.ControllerServices_Service service = new br.leona.estacao.controller.ControllerServices_Service();
+                br.leona.estacao.controller.ControllerServices port = service.getControllerServicesPort();
+                // TODO initialize WS operation arguments here
+                // TODO process result here
+                java.lang.String result = port.moverElevacao(p);
+                System.out.println("Result = "+result);
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
+            }*/
             r = 1;
             System.out.println("Movimentou pra Cima");
         }
@@ -56,11 +70,8 @@ public class ObservacaoService implements Serializable{
             System.out.println("Ligou");
         }
         if (l == "RESET"){
-            System.out.println("resetou");
             r = 1;
             
-            //Aqui coloca movimentação RESET
-
             System.out.println("Resetou");
         }
         return r;

@@ -14,7 +14,7 @@ public class Consultas implements EntityManagerProvider {
 
     @Override
     public EntityManagerFactory getEntityManagerFactory() {
-        return Persistence.createEntityManagerFactory("LEONA");
+        return Persistence.createEntityManagerFactory("USUARIO");
     }  
     
 }

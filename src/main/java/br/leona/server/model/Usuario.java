@@ -7,22 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario implements Serializable{
-    
+public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     
+    //Propriedades
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    private String instituicao;
-    private String telefone;
-    private String email;
     private String senha;
-    private String confirma;
-    private String perfil;
+    private String email;
     private String status;
-
+    private String tipo;
+    
+    
+    //Construtores
     public Long getId() {
         return id;
     }
@@ -39,20 +39,12 @@ public class Usuario implements Serializable{
         this.nome = nome;
     }
 
-    public String getInstituicao() {
-        return instituicao;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getEmail() {
@@ -63,30 +55,6 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getConfirma() {
-        return confirma;
-    }
-
-    public void setConfirma(String confirma) {
-        this.confirma = confirma;
-    }
-
-    public String getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(String perfil) {
-        this.perfil = perfil;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -94,6 +62,16 @@ public class Usuario implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
     
     @Override
     public int hashCode() {
@@ -118,5 +96,14 @@ public class Usuario implements Serializable{
     @Override
     public String toString() {
         return "model.Usuario[ id=" + id + " ]";
+    }
+    
+    
+    
+    
+    
+    
+    public String teste(){
+        return "TESTE GRANDE";
     }
 }

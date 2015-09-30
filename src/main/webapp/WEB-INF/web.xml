@@ -44,10 +44,6 @@
         <servlet-name>BuscarImagemServlet</servlet-name>
         <servlet-class>br.leona.servidor.servlet.BuscarImagemServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>PantiltResetServlet2</servlet-name>
-        <servlet-class>br.leona.servidor.servlet.PantiltResetServlet2</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>PantiltLeftServlet</servlet-name>
         <url-pattern>/PantiltLeftServlet/*</url-pattern>
@@ -123,10 +119,6 @@
     <servlet-mapping>
         <servlet-name>BuscarImagemServlet</servlet-name>
         <url-pattern>/BuscarImagemServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PantiltResetServlet2</servlet-name>
-        <url-pattern>/PantiltResetServlet2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

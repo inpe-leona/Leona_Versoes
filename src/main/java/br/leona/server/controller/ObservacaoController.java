@@ -28,6 +28,13 @@ public class ObservacaoController {
         this.request = request;
     }
     
+    
+    @Get
+    @Path("listaObservacoes")
+    public void listaObservacoes(){
+        List<Observacao> listO = obsService.listObservacoes();
+        indexController.paginaPastaImagem(listO);
+    }
     ///////////////Antigos
     @Post
     @Path("/cadastrarObservacao")

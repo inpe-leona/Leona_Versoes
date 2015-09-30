@@ -1,4 +1,4 @@
-package br.leona.server.servlet;
+package br.leona.servidor.servlet;
 
 import br.leona.server.service.ImagemService;
 import java.io.IOException;
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class IniciarGravacaoServlet extends HttpServlet {
+public class PararGravacaoServlet extends HttpServlet {
 
     private ImagemService imgService;
     
-    public IniciarGravacaoServlet(){
+    public PararGravacaoServlet(){
         this.imgService = new ImagemService();
     }
     
@@ -23,10 +23,10 @@ public class IniciarGravacaoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet IniciarGravacaoServlet</title>");            
+            out.println("<title>Servlet PararGravacaoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet IniciarGravacaoServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PararGravacaoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -35,7 +35,7 @@ public class IniciarGravacaoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        imgService.iniciarGravacao();
+        imgService.pararGravacao();
     }
     
     @Override
@@ -48,5 +48,4 @@ public class IniciarGravacaoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
-
 }

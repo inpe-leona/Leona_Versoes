@@ -7,53 +7,68 @@ import br.com.caelum.vraptor.Result;
 import br.leona.server.model.Usuario;
 import br.leona.server.service.UsuarioService;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 @Resource
 public class UsuarioController {
     
-    private UsuarioService usuS;
-    private IndexController indC;
+    private UsuarioService usuService;
+    private IndexController indexController;
+    private Result r;
     
     public UsuarioController(Result r){
-        this.usuS = new UsuarioService();   
-        this.indC = new IndexController(r);
+        this.usuService = new UsuarioService();
+        this.indexController = new IndexController(r);
     }
     
     @Post
     @Path("/cadastrarUsuario")
-    public void cadastrarUsuario(Usuario usuario) throws NoSuchAlgorithmException{
-        String r = usuS.cadastrar(usuario);
-        if (r == "ok"){
-            indC.paginaCadastroUsuarioSucesso(); 
+    public void cadastrarUsuario(Usuario usuario) throws NoSuchAlgorithmException{        
+        String resposta = usuService.cadastrar(usuario);        
+        if (resposta == "OK"){
+            indexController.paginaCadastroUsuarioSucesso();
         }else{
-            indC.cadastroUsuario(usuario, r);
-        }
-        
+            JOptionPane.showMessageDialog(null, resposta);
+            indexController.paginaCadastroUsuario(usuario);
+        }  
     }
     
     @Post
     @Path("/logarUsuario")
-    public void logarUsuario(Usuario usuario) throws NoSuchAlgorithmException{
-        System.out.println("usuar"+usuario.getEmail());
-        System.out.println("usuar"+usuario.getSenha());
-        Usuario u = usuS.logar(usuario);
-        if (u == null){
-            indC.login(usuario, "Usuario/Senha não encontrados");
+    public void logarUsuario(Usuario usuario){
+        /*Usuario u = usuService.logar(usuario);
+        if (u==null){
+            JOptionPane.showMessageDialog(null, "Usuário não encontrado");
         }else{
             if (u.getStatus().equals("Inativo")){
-                indC.login(usuario, "Usuário está desativado");
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado");    
             }else{
-                if (u.getPerfil().equals("Administrador")){
-                    //Pagina usuario adm
-                    indC.menuPrincipal(u);
-                }else if(u.getPerfil().equals("Comum")){
-                    //Pagina usuario comum
-                    indC.menuPrincipal(u);
-                }else{
-                    //Pagina usuario observador
-                    indC.menuPrincipal(u);
+                if (u.getTipo().equals("1")){*/
+                    indexController.paginaMenuAdm(usuario);
+               /* }else{
+                    indexController.paginaMenu(usuario);
                 }
             }
+        }*/
+    }
+
+    public List<Usuario> listaUsuarios() {
+        System.out.println("List Controller");
+        return usuService.listaUsuarios();
+    }
+    
+    @Post
+    @Path("/alterarStatusUsuario")
+    public void alterarStatusUsuario(Usuario usuario){
+        usuario = usuService.retornarUsuario(usuario);
+        if (usuario.getStatus().equals("Ativo")) {
+            usuario.setStatus("Inativo");
+        } else {
+            usuario.setStatus("Ativo");
         }
+        usuService.editar(usuario);
+        //serviceUser.enviarEmailComSenha(usuario.getEmail(), "Cadastro Ativado", " Olá "+usuario.getNome()+"\n Estamos entrando em contato para informá-lo que seu cadastro na Rede LEONA já está ativado. \n\n Obrigado!!");                        
+        indexController.paginaListagemUsuario();
     }
 }

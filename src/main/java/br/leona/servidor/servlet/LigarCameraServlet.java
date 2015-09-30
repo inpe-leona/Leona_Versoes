@@ -1,4 +1,4 @@
-package br.leona.server.servlet;
+package br.leona.servidor.servlet;
 
 import br.leona.server.service.ImagemService;
 import java.io.IOException;
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DesligarCameraServlet extends HttpServlet {
+public class LigarCameraServlet extends HttpServlet {
 
     private ImagemService imgService;
     
-    public DesligarCameraServlet(){
+    public LigarCameraServlet(){
         this.imgService = new ImagemService();
     }
     
@@ -24,10 +24,10 @@ public class DesligarCameraServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DesligarCameraServlet</title>");            
+            out.println("<title>Servlet LigarCameraServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DesligarCameraServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LigarCameraServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -36,7 +36,7 @@ public class DesligarCameraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        imgService.pararCamera();
+        imgService.ligarCamera();
     }
     
     @Override
@@ -48,6 +48,6 @@ public class DesligarCameraServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }
